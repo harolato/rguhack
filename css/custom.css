@@ -187,6 +187,25 @@ nav ul li:last-child {
 	border-collapse: separate !important;
 }
 
+.email-alert {
+	position: fixed;
+	bottom: 10px;
+	left: 10px;
+}
+
+.spinner {
+	background-image: url(../images/spinner.gif);
+	width: 32px;
+	height: 32px;
+	position: fixed;
+	z-index: 1051;
+	background-color: #FFF;
+	padding: 26px;
+	border-radius: 10px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
 .go-up {
 	position: fixed;
 	bottom: 10px;

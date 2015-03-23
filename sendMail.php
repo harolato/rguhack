@@ -1,8 +1,8 @@
 <?php
 header('Content-Type: application/json');
 
-session_start()
-if(isset($_SESSION['ip']) && $_SESSION['last_post'] + MININTERVAL < time()) die('too early');
+session_start();
+if(isset($_SESSION['ip']) && ($_SESSION['last_post'] + 10 > time()) ) die(json_encode(array("messages" => array("Slow down. " . ($_SESSION['last_post'] + 10 - time()) . 's. to wait.'), "status" => false)));
 
 $_SESSION['last_post'] = time();
 $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
@@ -51,7 +51,7 @@ if($errors) {
 }
  
 // Send the email
-$to = "rguhack@gmail.com";
+$to = "haro.lato@gmail.com";
 $subject = "$name";
 $message = "$message";
 $headers = "From: $email";
@@ -60,7 +60,7 @@ mail($to, $subject, $message, $headers);
  
 // Die with a success message
 $response;
-$response['messages'] = array("Your message has been sent!");\
+$response['messages'] = "Your message has been sent!";
 $response['status'] = true;
 die(json_encode($response));
  

@@ -270,7 +270,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="ContactLabel">Contact me</h4>
+        <h4 class="modal-title" id="ContactLabel">Contact us</h4>
       </div>
       <div class="modal-body">
         <form>
@@ -374,7 +374,6 @@
             "message" : $('textarea#Message').val()
           }
           sendEmail(data);
-          $('#contactModal').modal('hide');
         });
 
         $(document).scroll(function(e){
@@ -393,7 +392,42 @@
       });
       
       function sendEmail(data) {
-        console.log(data);
+        var spinner = $('<div class="spinner"></div>')
+        $('body').prepend(spinner);
+        centerObject($('.spinner'));
+        $('.email-danger').remove();
+        var request = $.ajax({
+          url : 'sendMail.php',
+          method : "POST",
+          data : data
+        });
+        
+        request.done(function( response ) {
+          $('.spinner').remove();
+            if ( response.status == true ) {
+              var alert = $('<div class="alert alert-success email-alert" role="alert">' + response.messages + '</div>');
+              $('body').prepend(alert);
+              setTimeout(function(){
+                $('.email-alert').remove();
+              },3000);
+              $('#contactModal').modal('hide');
+              $('textarea#Message').val('');
+              $('input#Subject').val('');
+              $('input#Email').val('');
+            } else {
+              var message ="";
+              for ( var i = 0; i < response.messages.length ; i++ ) {
+                message += response.messages[i] + "<br/>";
+              }
+              var alert = $('<div class="alert alert-danger email-danger" role="alert">Following errors were found:<br/>' + message + '</div>');
+              $('#contactModal .modal-body').prepend(alert);
+            }
+            console.log(response);
+          });
+        request.fail(function (jqXHR, textStatus){
+            alert( "Request failed: " + textStatus );
+            console.log(jqXHR);
+          });
       }
       function animatedScroll ( target ) {
         $('html, body').animate({
