@@ -1,0 +1,24 @@
+# blog.oscarliang.net
+# Redirect Primary Domain URL to Sub-Directory using .htaccess
+
+# Do not change this line.
+RewriteEngine on
+
+# Change domain.com to be your primary main domain.
+RewriteCond %{HTTP_HOST} ^(www.)?domain.com$
+
+# Change 'subfolder' to be the folder you want to redirect request to.
+RewriteCond %{REQUEST_URI} !^/subfolder/
+
+# Don't change this line.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Change 'subfolder' to be the folder you want to use for your primary domain.
+RewriteRule ^(.*)$ /subfolder/$1
+
+# Change domain.com to be your primary domain again.
+# Change 'subfolder' to be the folder you will use for your primary domain
+# followed by / then the main file for your site, index.php, index.html, etc.
+RewriteCond %{HTTP_HOST} ^(www.)?domain.com$
+RewriteRule ^(/)?$ subfolder/index.php [L]
