@@ -1,3 +1,3 @@
 # rguhack
 
-Index.dev.html current working version
+Index.html current working version
