@@ -32,6 +32,8 @@
       <li><a href="#faq"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> FAQ</a></li>
       <li><a href="#sponsors"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Sponsors</a></li>
       <li><a href="#location"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contacts</a></li>
+      <li><a href="https://twitter.com/RGUHack" target="_blank"><img src="images/twitter.png" alt="twitter" width="20"></a></li>
+      <li><a href="https://www.facebook.com/events/1592686967641580/1593187554258188/" target="_blank"><img src="images/facebook.png" alt="twitter" width="20"></a></li>
     </ul>
   </nav>
 
@@ -130,7 +132,7 @@
     <br/>
     <div class="row">
       <div class="col-xs-6">
-        <h3>Saturday 17<sup>th</sup> April</h3>
+        <h3>Saturday 18<sup>th</sup> April</h3>
         <table class="table">
           <tr>
             <th>Time</th>
@@ -163,7 +165,7 @@
         </table>
       </div>
       <div class="col-xs-6">
-        <h3>Sunday 18<sup>th</sup> April</h3>
+        <h3>Sunday 19<sup>th</sup> April</h3>
         <table class="table">
           <tr>
             <th>Time</th>
@@ -386,8 +388,11 @@
         });
 
         $('nav li a, .go-up a').click(function(e) {
-          e.preventDefault();
-          animatedScroll($(this).attr('href'));
+          var href = $(this).attr('href');
+          if ( !href.split('http://') ) {
+            e.preventDefault();
+            animatedScroll(href);
+          }
         });
       });
       

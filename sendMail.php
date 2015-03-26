@@ -51,7 +51,7 @@ if($errors) {
 }
  
 // Send the email
-$to = "haro.lato@gmail.com";
+$to = "rguhack@gmail.com";
 $subject = "$name";
 $message = "$message";
 $headers = "From: $email";
