@@ -26,12 +26,12 @@
   <nav>
     <div class="expand-menu"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div>
     <ul>
-      <li><a href="#home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-      <li><a href="#timetable"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Schedule</a></li>
+      <li><a class="scroll" href="#home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+      <li><a class="scroll" href="#timetable"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Schedule</a></li>
       <!-- <li><a href="#location"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Venue</a></li> -->
-      <li><a href="#faq"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> FAQ</a></li>
-      <li><a href="#sponsors"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Sponsors</a></li>
-      <li><a href="#location"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contacts</a></li>
+      <li><a class="scroll" href="#faq"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> FAQ</a></li>
+      <li><a class="scroll" href="#sponsors"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Sponsors</a></li>
+      <li><a class="scroll" href="#location"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contacts</a></li>
       <li><a href="https://twitter.com/RGUHack" target="_blank"><img src="images/twitter.png" alt="twitter" width="20"></a></li>
       <li><a href="https://www.facebook.com/events/1592686967641580/1593187554258188/" target="_blank"><img src="images/facebook.png" alt="twitter" width="20"></a></li>
     </ul>
@@ -247,6 +247,45 @@
         <img src="images/logo.jpg" width="150" alt="logo">
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+        <br/>
+        <h4><b>Hardware Lab Partners:</b></h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5 text-right">
+        <img src="images/alienware.png" width="200" alt="logo">
+      </div>
+      <div class="col-xs-2 text-center">
+        <img src="images/oculus.png" width="200" alt="logo">
+      </div>
+      <div class="col-xs-5 text-left">
+        <img src="images/leapmotion.png" width="200" alt="logo">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 text-right">
+        <img src="images/thalmic.png" width="200" alt="logo">
+      </div>
+      <div class="col-xs-4 text-center">
+        <img src="images/pebble.png" width="200" alt="logo">
+      </div>
+      <div class="col-xs-4 text-left">
+        <img src="images/tessel.png" width="200" alt="logo">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5 text-right">
+        <img src="images/spark.png" width="200" alt="logo">
+      </div>
+      <div class="col-xs-2 text-center">
+        <img src="images/sparkfun.png" width="200" alt="logo">
+      </div>
+      <div class="col-xs-5 text-left">
+        <img src="images/muse.png" width="200" alt="logo">
+      </div>
+    </div>
   </div>
   <!-- <div class="container-fluid">
     <div class="row separator location"></div>
@@ -387,12 +426,10 @@
           }
         });
 
-        $('nav li a, .go-up a').click(function(e) {
+        $('nav li a.scroll, .go-up a').click(function(e) {
           var href = $(this).attr('href');
-          if ( !href.split('http://') ) {
             e.preventDefault();
             animatedScroll(href);
-          }
         });
       });
       
